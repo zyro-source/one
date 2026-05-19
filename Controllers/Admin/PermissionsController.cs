@@ -1,10 +1,12 @@
 using buildwave.Data;
 using buildwave.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace buildwave.Controllers.Admin;
 
+[Authorize]
 public class PermissionsController : Controller
 {
     private readonly ApplicationDbContext _context;
@@ -16,7 +18,10 @@ public class PermissionsController : Controller
 
     public async Task<IActionResult> Index()
     {
-        var permissions = await _context.Permissions.ToListAsync();
+        var permissions = await _context.Permissions
+            .OrderBy(x => x.Name)
+            .ToListAsync();
+
         return View(permissions);
     }
 
@@ -26,6 +31,7 @@ public class PermissionsController : Controller
     }
 
     [HttpPost]
+    [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(Permission model)
     {
         if (!ModelState.IsValid)
@@ -34,6 +40,7 @@ public class PermissionsController : Controller
         model.Id = Guid.NewGuid();
 
         _context.Permissions.Add(model);
+
         await _context.SaveChangesAsync();
 
         return RedirectToAction(nameof(Index));
@@ -42,13 +49,22 @@ public class PermissionsController : Controller
     public async Task<IActionResult> Edit(Guid id)
     {
         var permission = await _context.Permissions.FindAsync(id);
+
+        if (permission == null)
+            return NotFound();
+
         return View(permission);
     }
 
     [HttpPost]
+    [ValidateAntiForgeryToken]
     public async Task<IActionResult> Edit(Permission model)
     {
+        if (!ModelState.IsValid)
+            return View(model);
+
         _context.Permissions.Update(model);
+
         await _context.SaveChangesAsync();
 
         return RedirectToAction(nameof(Index));
@@ -58,11 +74,12 @@ public class PermissionsController : Controller
     {
         var permission = await _context.Permissions.FindAsync(id);
 
-        if (permission != null)
-        {
-            _context.Permissions.Remove(permission);
-            await _context.SaveChangesAsync();
-        }
+        if (permission == null)
+            return NotFound();
+
+        _context.Permissions.Remove(permission);
+
+        await _context.SaveChangesAsync();
 
         return RedirectToAction(nameof(Index));
     }

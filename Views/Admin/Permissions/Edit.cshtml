@@ -1,0 +1,43 @@
+@model buildwave.Entities.Permission
+
+@{
+    ViewData["Title"] = "Edit Permission";
+}
+
+<div class="erp-card">
+
+    <h2 class="mb-4">Edit Permission</h2>
+
+    <form method="post">
+
+        <input type="hidden" asp-for="Id" />
+
+        <div class="mb-3">
+
+            <label class="form-label">
+                Permission Name
+            </label>
+
+            <input asp-for="Name" class="form-control" />
+
+        </div>
+
+        <div class="mb-4">
+
+            <label class="form-label">
+                Permission Key
+            </label>
+
+            <input asp-for="Key" class="form-control" />
+
+        </div>
+
+        <button type="submit" class="btn btn-primary">
+
+            Update Permission
+
+        </button>
+
+    </form>
+
+</div>
