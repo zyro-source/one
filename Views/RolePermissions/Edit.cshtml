@@ -1,21 +1,89 @@
 @model buildwave.Entities.Role
 
-<h2>Manage Permissions for @Model.Name</h2>
+@{
+    ViewData["Title"] = "Manage Role Access";
 
-<form method="post">
+    var permissions =
+        ViewBag.Permissions as List<buildwave.Entities.Permission>;
+}
 
-    <input type="hidden" name="roleId" value="@Model.Id" />
+<div class="page-header mb-4">
 
-    @foreach (var perm in (List<buildwave.Entities.Permission>)ViewBag.Permissions)
-    {
-        var checkedAttr = Model.RolePermissions.Any(rp => rp.PermissionId == perm.Id) ? "checked" : "";
+    <div>
 
-        <div>
-            <input type="checkbox" name="permissionIds" value="@perm.Id" @checkedAttr />
-            @perm.Name (@perm.Key)
+        <h1 class="page-title">
+
+            @Model.Name Permissions
+
+        </h1>
+
+        <p class="text-muted">
+
+            Configure access rights for this role.
+
+        </p>
+
+    </div>
+
+</div>
+
+<div class="erp-card">
+
+    <form method="post">
+
+        <input type="hidden"
+               name="roleId"
+               value="@Model.Id" />
+
+        <div class="row">
+
+            @foreach (var permission in permissions!)
+            {
+                var assigned =
+                    Model.RolePermissions.Any(rp =>
+                        rp.PermissionId == permission.Id);
+
+                <div class="col-md-4 mb-3">
+
+                    <div class="permission-box">
+
+                        <label class="d-flex align-items-center gap-2">
+
+                            <input type="checkbox"
+                                   name="permissionIds"
+                                   value="@permission.Id"
+                                   @(assigned ? "checked" : "") />
+
+                            @permission.Name
+
+                        </label>
+
+                    </div>
+
+                </div>
+            }
+
         </div>
-    }
 
-    <button type="submit">Save</button>
+        <div class="mt-4 d-flex gap-2">
 
-</form>
+            <button type="submit"
+                    class="btn btn-primary">
+
+                Save Permissions
+
+            </button>
+
+            <a asp-controller="RolePermissions"
+               asp-action="Index"
+               class="btn btn-light">
+
+                Cancel
+
+            </a>
+
+        </div>
+
+    </form>
+
+</div>

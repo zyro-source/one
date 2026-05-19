@@ -1,0 +1,71 @@
+@model IEnumerable<buildwave.Entities.Role>
+
+@{
+    ViewData["Title"] = "Role Access";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+
+    <div>
+
+        <h2 class="fw-bold mb-1">
+            Role Access
+        </h2>
+
+        <p class="text-muted mb-0">
+            Configure permissions assigned to each role.
+        </p>
+
+    </div>
+
+</div>
+
+<div class="erp-card">
+
+    <table class="table align-middle">
+
+        <thead>
+
+            <tr>
+                <th>Role</th>
+                <th width="180">Permissions</th>
+                <th width="180">Actions</th>
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            @foreach (var role in Model)
+            {
+                <tr>
+
+                    <td class="fw-semibold">
+                        @role.Name
+                    </td>
+
+                    <td>
+
+                        @(role.RolePermissions?.Count ?? 0)
+
+                    </td>
+
+                    <td>
+
+                        <a asp-controller="RolePermissions" asp-action="Edit" asp-route-roleId="@role.Id"
+                           class="btn btn-primary btn-sm">
+
+                            Manage Access
+
+                        </a>
+
+                    </td>
+
+                </tr>
+            }
+
+        </tbody>
+
+    </table>
+
+</div>

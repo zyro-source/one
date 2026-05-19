@@ -1,0 +1,73 @@
+@model buildwave.Entities.Role
+
+@{
+    ViewData["Title"] = "Manage Role Access";
+
+    var permissions =
+        ViewBag.Permissions as List<buildwave.Entities.Permission>;
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+
+    <div>
+
+        <h2 class="fw-bold mb-1">
+            @Model.Name Permissions
+        </h2>
+
+        <p class="text-muted mb-0">
+            Select permissions assigned to this role.
+        </p>
+
+    </div>
+
+</div>
+
+<div class="erp-card">
+
+    <form method="post">
+
+        <input type="hidden" name="roleId" value="@Model.Id" />
+
+        <div class="row">
+
+            @foreach (var permission in permissions!)
+            {
+                var assigned =
+                    Model.RolePermissions.Any(rp =>
+                        rp.PermissionId == permission.Id);
+
+                <div class="col-md-4 mb-3">
+
+                    <label class="d-flex align-items-center gap-2">
+
+                        <input type="checkbox" name="permissionIds" value="@permission.Id" @(assigned ? "checked" : "") />
+
+                        @permission.Name
+
+                    </label>
+
+                </div>
+            }
+
+        </div>
+
+        <div class="mt-4">
+
+            <button type="submit" class="btn btn-primary">
+
+                Save Permissions
+
+            </button>
+
+            <a asp-controller="RolePermissions" asp-action="Index" class="btn btn-light">
+
+                Cancel
+
+            </a>
+
+        </div>
+
+    </form>
+
+</div>

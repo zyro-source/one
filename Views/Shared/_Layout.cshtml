@@ -6,210 +6,186 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>@ViewData["Title"] - BuildWave ERP</title>
+    <title>
+        @(ViewData["Title"] ?? "ERP") - BuildWave
+    </title>
 
     <!-- BOOTSTRAP -->
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 
-    <!-- BOOTSTRAP ICONS -->
+    <!-- ICONS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-    <!-- INTER FONT -->
+    <!-- FONT -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
+
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
           rel="stylesheet">
 
-    <!-- ERP CSS -->
+    <!-- APP CSS -->
     <link rel="stylesheet" href="~/css/erp.css" asp-append-version="true" />
 
 </head>
 
 <body>
 
-    <!-- COMMAND PALETTE -->
-    <div class="command-palette" id="commandPalette">
+    <!-- MOBILE OVERLAY -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
 
-        <div class="command-box">
-
-            <div class="command-header">
-
-                <i class="bi bi-search"></i>
-
-                <input type="text" placeholder="Search modules, transactions, reports..." class="command-input">
-
-            </div>
-
-            <div class="command-results">
-
-                <div class="command-item">
-                    <i class="bi bi-grid"></i>
-                    Dashboard
-                </div>
-
-                <div class="command-item">
-                    <i class="bi bi-wallet2"></i>
-                    Finance
-                </div>
-
-                <div class="command-item">
-                    <i class="bi bi-box-seam"></i>
-                    Inventory
-                </div>
-
-                <div class="command-item">
-                    <i class="bi bi-cart3"></i>
-                    Procurement
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-    <div class="erp-wrapper">
+    <div class="app-shell">
 
         <!-- SIDEBAR -->
-        <aside class="erp-sidebar" id="sidebar">
+        <aside class="erp-sidebar" id="erpSidebar">
 
-            <!-- LOGO -->
-            <div class="sidebar-top">
+            <!-- BRAND -->
+            <div class="sidebar-brand">
 
-                <div>
+                <div class="brand-logo">
+                    BW
+                </div>
 
-                    <div class="erp-logo">
-                        BUILDWAVE
+                <div class="brand-meta">
+
+                    <div class="brand-title">
+                        BuildWave
                     </div>
 
-                    <div class="company-name">
-                        Rapid Automations Ltd
+                    <div class="brand-subtitle">
+                        Enterprise Suite
                     </div>
 
                 </div>
 
-                <button class="collapse-btn" id="collapseBtn">
-
-                    <i class="bi bi-list"></i>
-
-                </button>
-
             </div>
 
-            <!-- SEARCH -->
-            <div class="sidebar-search">
+            <!-- NAV -->
+            <nav class="sidebar-nav">
 
-                <i class="bi bi-search"></i>
+                <div class="nav-section-title">
+                    MAIN
+                </div>
 
-                <input type="text" placeholder="Search ERP...">
+                <a href="#" class="nav-item active">
 
-            </div>
+                    <i class="bi bi-grid-1x2"></i>
 
-            <!-- MENU -->
-            <div class="sidebar-menu">
-
-                <a href="#" class="menu-item active">
-
-                    <i class="bi bi-grid"></i>
-
-                    <span>Dashboard</span>
+                    <span>
+                        Dashboard
+                    </span>
 
                 </a>
 
-                <a href="#" class="menu-item">
+                <a href="#" class="nav-item">
 
                     <i class="bi bi-wallet2"></i>
 
-                    <span>Finance</span>
+                    <span>
+                        Finance
+                    </span>
 
                 </a>
 
-                <a href="#" class="menu-item">
+                <a href="#" class="nav-item">
 
                     <i class="bi bi-box-seam"></i>
 
-                    <span>Inventory</span>
+                    <span>
+                        Inventory
+                    </span>
 
                 </a>
 
-                <a href="#" class="menu-item">
+                <a href="#" class="nav-item">
 
                     <i class="bi bi-cart3"></i>
 
-                    <span>Procurement</span>
+                    <span>
+                        Procurement
+                    </span>
 
                 </a>
 
-                <a href="#" class="menu-item">
+                <a href="#" class="nav-item">
 
                     <i class="bi bi-people"></i>
 
-                    <span>CRM</span>
+                    <span>
+                        CRM
+                    </span>
 
                 </a>
 
-                <a href="#" class="menu-item">
+                <a href="#" class="nav-item">
 
                     <i class="bi bi-person-badge"></i>
 
-                    <span>HR</span>
+                    <span>
+                        HR
+                    </span>
 
                 </a>
 
-                <a href="#" class="menu-item">
+                <div class="nav-section-title">
+                    ADMINISTRATION
+                </div>
 
-                    <i class="bi bi-bar-chart"></i>
+                <a asp-controller="Permissions" asp-action="Index" class="nav-item">
 
-                    <span>Analytics</span>
-
-                </a>
-
-                <a href="#" class="menu-item">
-
-                    <i class="bi bi-file-earmark-text"></i>
-
-                    <span>Reports</span>
-
-                </a>
-                <!--<a asp-controller="Permissions" asp-action="Index" class="menu-item">-->
-                <a asp-area="Admin" asp-controller="Permissions" asp-action="Index" class="menu-item">
                     <i class="bi bi-key"></i>
-                    <span>Permissions</span>
+
+                    <span>
+                        Permissions
+                    </span>
+
                 </a>
 
-                <a asp-controller="RolePermissions" asp-action="Index" class="menu-item">
+                <a asp-controller="RolePermissions" asp-action="Index" class="nav-item">
+
                     <i class="bi bi-shield-lock"></i>
-                    <span>Role Access</span>
+
+                    <span>
+                        Role Access
+                    </span>
+
                 </a>
 
-                <a href="#" class="menu-item">
+                <a href="#" class="nav-item">
 
                     <i class="bi bi-gear"></i>
 
-                    <span>Settings</span>
+                    <span>
+                        Settings
+                    </span>
 
                 </a>
 
-            </div>
+            </nav>
 
-            <!-- USER -->
-            <div class="sidebar-user">
+            <!-- SIDEBAR FOOTER -->
+            <div class="sidebar-footer">
 
-                <div class="user-box">
+                <div class="sidebar-user">
 
                     <div class="user-avatar">
-                        @((User.Identity?.Name ?? "U").Substring(0, 1))
+
+                        @((User.Identity?.Name ?? "U")[0])
+
                     </div>
 
-                    <div class="user-meta">
+                    <div class="user-info">
 
                         <div class="user-name">
+
                             @(User.Identity?.Name ?? "Unknown User")
+
                         </div>
 
                         <div class="user-role">
+
                             Administrator
+
                         </div>
 
                     </div>
@@ -220,8 +196,6 @@
 
                     <i class="bi bi-box-arrow-right"></i>
 
-                    <span>Logout</span>
-
                 </a>
 
             </div>
@@ -229,50 +203,49 @@
         </aside>
 
         <!-- MAIN -->
-        <div class="erp-main" id="erpMain">
+        <div class="app-main">
 
             <!-- TOPBAR -->
             <header class="erp-topbar">
 
+                <!-- LEFT -->
                 <div class="topbar-left">
 
-                    <div class="breadcrumb-box">
+                    <button class="mobile-menu-btn" id="mobileMenuBtn">
 
-                        <span>BuildWave</span>
+                        <i class="bi bi-list"></i>
 
-                        <i class="bi bi-chevron-right"></i>
+                    </button>
 
-                        <span>Dashboard</span>
+                    <!-- GLOBAL SEARCH -->
+                    <div class="global-search" id="commandTrigger">
+
+                        <i class="bi bi-search"></i>
+
+                        <span>
+                            Search anything...
+                        </span>
+
+                        <kbd>
+                            Ctrl K
+                        </kbd>
 
                     </div>
 
-                    <h1 class="page-title">
-                        Executive Dashboard
-                    </h1>
-
                 </div>
 
+                <!-- RIGHT -->
                 <div class="topbar-right">
 
-                    <button class="icon-btn" id="themeToggle">
-
-                        <i class="bi bi-moon"></i>
-
-                    </button>
-
-                    <button class="icon-btn">
+                    <button class="topbar-btn">
 
                         <i class="bi bi-bell"></i>
 
-                        <span class="notif-badge">
-                            4
-                        </span>
-
                     </button>
 
-                    <button class="icon-btn">
+                    <button class="topbar-btn" id="themeToggle">
 
-                        <i class="bi bi-question-circle"></i>
+                        <i class="bi bi-moon-stars"></i>
 
                     </button>
 
@@ -280,277 +253,8 @@
 
             </header>
 
-            <!-- CONTENT -->
-            <main class="erp-content">
-
-                <!-- DASHBOARD HEADER -->
-                <div class="dashboard-header">
-
-                    <div>
-
-                        <h2>
-                            Welcome back,
-                            @(User.Identity?.Name ?? "Unknown User")
-                        </h2>
-
-                        <p>
-                            Here's your business performance overview today.
-                        </p>
-
-                    </div>
-
-                    <div class="header-actions">
-
-                        <button class="secondary-btn">
-
-                            <i class="bi bi-download"></i>
-
-                            Export
-
-                        </button>
-
-                        <button class="primary-btn">
-
-                            <i class="bi bi-plus-lg"></i>
-
-                            Quick Action
-
-                        </button>
-
-                    </div>
-
-                </div>
-
-                <!-- KPI CARDS -->
-                <div class="row g-4 mb-4">
-
-                    <div class="col-xl-3 col-md-6">
-
-                        <div class="erp-card metric-card">
-
-                            <div class="metric-top">
-
-                                <span>Total Revenue</span>
-
-                                <div class="metric-icon blue">
-                                    <i class="bi bi-currency-dollar"></i>
-                                </div>
-
-                            </div>
-
-                            <div class="metric-value">
-                                $248,430
-                            </div>
-
-                            <div class="metric-growth positive">
-                                +12.4% this month
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <div class="col-xl-3 col-md-6">
-
-                        <div class="erp-card metric-card">
-
-                            <div class="metric-top">
-
-                                <span>Orders</span>
-
-                                <div class="metric-icon green">
-                                    <i class="bi bi-cart-check"></i>
-                                </div>
-
-                            </div>
-
-                            <div class="metric-value">
-                                1,284
-                            </div>
-
-                            <div class="metric-growth positive">
-                                +8.2% this week
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <div class="col-xl-3 col-md-6">
-
-                        <div class="erp-card metric-card">
-
-                            <div class="metric-top">
-
-                                <span>Inventory</span>
-
-                                <div class="metric-icon orange">
-                                    <i class="bi bi-box-seam"></i>
-                                </div>
-
-                            </div>
-
-                            <div class="metric-value">
-                                8,492
-                            </div>
-
-                            <div class="metric-growth">
-                                124 low stock
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <div class="col-xl-3 col-md-6">
-
-                        <div class="erp-card metric-card">
-
-                            <div class="metric-top">
-
-                                <span>Employees</span>
-
-                                <div class="metric-icon purple">
-                                    <i class="bi bi-people"></i>
-                                </div>
-
-                            </div>
-
-                            <div class="metric-value">
-                                84
-                            </div>
-
-                            <div class="metric-growth positive">
-                                96% attendance
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <!-- MAIN GRID -->
-                <div class="row g-4">
-
-                    <!-- CHART -->
-                    <div class="col-xl-8">
-
-                        <div class="erp-card chart-card">
-
-                            <div class="card-header-custom">
-
-                                <div>
-
-                                    <h3>Revenue Analytics</h3>
-
-                                    <p>Monthly business growth</p>
-
-                                </div>
-
-                                <button class="secondary-btn">
-                                    Monthly
-                                </button>
-
-                            </div>
-
-                            <div class="fake-chart">
-
-                                <div class="bar" style="height:45%"></div>
-                                <div class="bar" style="height:60%"></div>
-                                <div class="bar" style="height:52%"></div>
-                                <div class="bar" style="height:80%"></div>
-                                <div class="bar" style="height:70%"></div>
-                                <div class="bar" style="height:95%"></div>
-                                <div class="bar" style="height:78%"></div>
-                                <div class="bar" style="height:100%"></div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <!-- ACTIVITY -->
-                    <div class="col-xl-4">
-
-                        <div class="erp-card">
-
-                            <div class="card-header-custom">
-
-                                <div>
-
-                                    <h3>Live Activity</h3>
-
-                                    <p>Realtime system actions</p>
-
-                                </div>
-
-                            </div>
-
-                            <div class="activity-list">
-
-                                <div class="activity-item">
-
-                                    <div class="activity-dot blue"></div>
-
-                                    <div>
-
-                                        <strong>
-                                            Invoice Generated
-                                        </strong>
-
-                                        <p>
-                                            INV-2026-0034 created
-                                        </p>
-
-                                    </div>
-
-                                </div>
-
-                                <div class="activity-item">
-
-                                    <div class="activity-dot green"></div>
-
-                                    <div>
-
-                                        <strong>
-                                            Payment Received
-                                        </strong>
-
-                                        <p>
-                                            $14,000 received
-                                        </p>
-
-                                    </div>
-
-                                </div>
-
-                                <div class="activity-item">
-
-                                    <div class="activity-dot orange"></div>
-
-                                    <div>
-
-                                        <strong>
-                                            Inventory Alert
-                                        </strong>
-
-                                        <p>
-                                            Cement stock running low
-                                        </p>
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
+            <!-- PAGE -->
+            <main class="page-container">
 
                 @RenderBody()
 
@@ -560,12 +264,58 @@
 
     </div>
 
-    <!-- FLOATING ACTION BUTTON -->
-    <button class="fab">
+    <!-- COMMAND PALETTE -->
+    <div class="command-palette" id="commandPalette">
 
-        <i class="bi bi-plus-lg"></i>
+        <div class="command-modal">
 
-    </button>
+            <div class="command-search">
+
+                <i class="bi bi-search"></i>
+
+                <input type="text" placeholder="Search modules, actions, reports..." />
+
+            </div>
+
+            <div class="command-results">
+
+                <div class="command-group">
+
+                    <div class="command-group-title">
+                        Navigation
+                    </div>
+
+                    <div class="command-item">
+
+                        <i class="bi bi-grid-1x2"></i>
+
+                        Dashboard
+
+                    </div>
+
+                    <div class="command-item">
+
+                        <i class="bi bi-wallet2"></i>
+
+                        Finance
+
+                    </div>
+
+                    <div class="command-item">
+
+                        <i class="bi bi-box-seam"></i>
+
+                        Inventory
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
 
     <!-- SCRIPTS -->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
@@ -574,40 +324,29 @@
 
     <script>
 
-        // SIDEBAR COLLAPSE
-
-        const collapseBtn =
-        document.getElementById('collapseBtn');
-
-        collapseBtn.addEventListener('click', () => {
-
-        document.body.classList.toggle('sidebar-collapsed');
-
-        });
-
-        // DARK MODE
-
-        const themeToggle =
-        document.getElementById('themeToggle');
-
-        themeToggle.addEventListener('click', () => {
-
-        document.body.classList.toggle('dark-mode');
-
-        });
-
+        // =========================================
         // COMMAND PALETTE
+        // =========================================
 
         const palette =
         document.getElementById('commandPalette');
 
-        document.addEventListener('keydown', function (e) {
+        const trigger =
+        document.getElementById('commandTrigger');
+
+        trigger.addEventListener('click', () => {
+
+        palette.classList.add('show');
+
+        });
+
+        document.addEventListener('keydown', (e) => {
 
         if (e.ctrlKey && e.key === 'k') {
 
         e.preventDefault();
 
-        palette.classList.toggle('show');
+        palette.classList.add('show');
 
         }
 
@@ -616,6 +355,58 @@
         palette.classList.remove('show');
 
         }
+
+        });
+
+        palette.addEventListener('click', (e) => {
+
+        if (e.target === palette) {
+
+        palette.classList.remove('show');
+
+        }
+
+        });
+
+        // =========================================
+        // MOBILE SIDEBAR
+        // =========================================
+
+        const sidebar =
+        document.getElementById('erpSidebar');
+
+        const mobileBtn =
+        document.getElementById('mobileMenuBtn');
+
+        const overlay =
+        document.getElementById('mobileOverlay');
+
+        mobileBtn.addEventListener('click', () => {
+
+        sidebar.classList.toggle('show');
+
+        overlay.classList.toggle('show');
+
+        });
+
+        overlay.addEventListener('click', () => {
+
+        sidebar.classList.remove('show');
+
+        overlay.classList.remove('show');
+
+        });
+
+        // =========================================
+        // THEME
+        // =========================================
+
+        const themeToggle =
+        document.getElementById('themeToggle');
+
+        themeToggle.addEventListener('click', () => {
+
+        document.body.classList.toggle('dark-mode');
 
         });
 
