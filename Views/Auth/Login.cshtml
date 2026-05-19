@@ -1,0 +1,68 @@
+@model buildwave.ViewModels.LoginViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>BuildWave ERP Login</title>
+
+    <link rel="stylesheet"
+          href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+    <link rel="stylesheet"
+          href="~/css/erp.css" />
+
+</head>
+
+<body class="login-page">
+
+<div class="login-container">
+
+    <div class="login-card">
+
+        <h2>BuildWave ERP</h2>
+
+        <p class="login-subtitle">
+            Enterprise Resource Planning Platform
+        </p>
+
+        <form method="post">
+
+            <div class="mb-3">
+
+                <label>Email</label>
+
+                <input asp-for="Email"
+                       class="form-control" />
+
+            </div>
+
+            <div class="mb-4">
+
+                <label>Password</label>
+
+                <input asp-for="Password"
+                       type="password"
+                       class="form-control" />
+
+            </div>
+
+            <button type="submit"
+                    class="btn btn-primary w-100">
+
+                Login
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>

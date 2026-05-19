@@ -1,0 +1,27 @@
+@model List<buildwave.Entities.User>
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Users Management</h2>
+
+@foreach (var user in Model)
+{
+    <div class="card">
+        <h3>@user.FullName</h3>
+        <p>@user.Email</p>
+
+        <p>
+            Roles:
+            @foreach (var r in user.UserRoles)
+            {
+                <span>@r.Role.Name</span>
+            }
+        </p>
+
+        <a href="/Admin/AssignRole?userId=@user.Id">
+            Manage Roles
+        </a>
+    </div>
+}

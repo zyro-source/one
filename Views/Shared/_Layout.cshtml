@@ -1,0 +1,147 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>@ViewData["Title"] - BuildWave ERP</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/erp.css" asp-append-version="true" />
+</head>
+
+<body>
+
+    <div class="erp-wrapper">
+
+        <!-- SIDEBAR -->
+        <aside class="erp-sidebar">
+
+            <!-- TOP -->
+            <div class="sidebar-top">
+
+                <div class="erp-logo">
+                    BUILDWAVE
+                </div>
+
+                <div class="company-name">
+                    Rapid Automations Ltd
+                </div>
+
+            </div>
+
+            <!-- MODULES -->
+            <div class="sidebar-menu">
+
+                <a href="#" class="menu-item active">
+                    Dashboard
+                </a>
+
+                <a href="#" class="menu-item">
+                    Finance
+                </a>
+
+                <a href="#" class="menu-item">
+                    Inventory
+                </a>
+
+                <a href="#" class="menu-item">
+                    Procurement
+                </a>
+
+                <a href="#" class="menu-item">
+                    CRM
+                </a>
+
+                <a href="#" class="menu-item">
+                    HR
+                </a>
+
+                <a href="#" class="menu-item">
+                    Reports
+                </a>
+
+                <a href="#" class="menu-item">
+                    Settings
+                </a>
+
+            </div>
+
+            <!-- BOTTOM -->
+            <div class="sidebar-bottom">
+
+                <a asp-controller="Auth" asp-action="Logout" class="logout-btn">
+                    Logout
+                </a>
+
+            </div>
+
+        </aside>
+
+        <!-- MAIN -->
+        <div class="erp-main">
+
+            <!-- TOPBAR -->
+            <header class="erp-topbar">
+
+                <div class="topbar-left">
+
+                    <span class="top-module">
+                        Dashboard
+                    </span>
+
+                </div>
+
+                <div class="topbar-right">
+
+                    <div class="profile-box">
+
+                        <div class="profile-avatar">
+                            @User.Identity?.Name?.Substring(0, 1)
+                        </div>
+
+                        <div class="profile-info">
+
+                            <div class="profile-name">
+                                @User.Identity?.Name
+                            </div>
+
+                            <div class="profile-role">
+                                Administrator
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+            <!-- CONTENT -->
+            <main class="erp-content">
+
+                @RenderBody()
+
+            </main>
+
+            <!-- FOOTER -->
+            <footer class="erp-footer">
+
+                BuildWave ERP © 2026
+
+            </footer>
+
+        </div>
+
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+
+</html>

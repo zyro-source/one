@@ -1,0 +1,46 @@
+@model buildwave.Entities.User
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@{
+    var roles = ViewBag.Roles as List<buildwave.Entities.Role>;
+
+    if (roles == null)
+    {
+        roles = new List<buildwave.Entities.Role>();
+    }
+}
+
+<h2>Manage Roles for @Model.FullName</h2>
+
+<h3>Current Roles</h3>
+
+@foreach (var r in Model.UserRoles)
+{
+    <form method="post" action="/Admin/RemoveRole">
+        <input type="hidden" name="userId" value="@Model.Id" />
+        <input type="hidden" name="roleId" value="@r.RoleId" />
+        <button type="submit">
+            Remove @r.Role.Name
+        </button>
+    </form>
+}
+
+<hr />
+
+<h3>Assign New Role</h3>
+
+<form method="post" action="/Admin/AssignRole">
+    <input type="hidden" name="userId" value="@Model.Id" />
+
+    <select name="roleId">
+        @foreach (var role in roles)
+        {
+            <option value="@role.Id">@role.Name</option>
+        }
+    </select>
+
+    <button type="submit">Assign Role</button>
+</form>
