@@ -115,3 +115,4 @@ D:\erp\buildwave\obj\Debug\net8.0\refint\buildwave.dll
 D:\erp\buildwave\obj\Debug\net8.0\buildwave.pdb
 D:\erp\buildwave\obj\Debug\net8.0\buildwave.genruntimeconfig.cache
 D:\erp\buildwave\obj\Debug\net8.0\ref\buildwave.dll
+D:\erp\buildwave\obj\Debug\net8.0\buildwave.sourcelink.json
