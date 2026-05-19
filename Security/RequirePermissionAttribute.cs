@@ -29,7 +29,6 @@ public class RequirePermissionAttribute : Attribute, IAsyncAuthorizationFilter
             .GetRequiredService<PermissionService>();
 
         var hasPermission = await service.HasPermission(id, _permission);
-
         if (!hasPermission)
         {
             context.Result = new ForbidResult();
