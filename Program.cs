@@ -53,6 +53,11 @@ builder.Services.AddSession(options =>
 });
 
 var app = builder.Build();
+using (var scope = app.Services.CreateScope())
+{
+    var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+    await buildwave.Data.Seeders.PermissionSeeder.SeedAsync(context);
+}
 
 if (!app.Environment.IsDevelopment())
 {

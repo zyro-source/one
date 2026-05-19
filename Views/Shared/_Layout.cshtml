@@ -172,6 +172,15 @@
                     <span>Reports</span>
 
                 </a>
+                <a asp-controller="Permissions" asp-action="Index" class="menu-item">
+                    <i class="bi bi-key"></i>
+                    <span>Permissions</span>
+                </a>
+
+                <a asp-controller="RolePermissions" asp-action="Index" class="menu-item">
+                    <i class="bi bi-shield-lock"></i>
+                    <span>Role Access</span>
+                </a>
 
                 <a href="#" class="menu-item">
 
@@ -189,13 +198,13 @@
                 <div class="user-box">
 
                     <div class="user-avatar">
-                        @User.Identity?.Name?.Substring(0, 1)
+                        @((User.Identity?.Name ?? "U").Substring(0, 1))
                     </div>
 
                     <div class="user-meta">
 
                         <div class="user-name">
-                            @User.Identity?.Name
+                            @(User.Identity?.Name ?? "Unknown User")
                         </div>
 
                         <div class="user-role">
@@ -280,7 +289,7 @@
 
                         <h2>
                             Welcome back,
-                            @User.Identity?.Name
+                            @(User.Identity?.Name ?? "Unknown User")
                         </h2>
 
                         <p>

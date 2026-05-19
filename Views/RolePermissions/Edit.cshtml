@@ -1,0 +1,21 @@
+@model buildwave.Entities.Role
+
+<h2>Manage Permissions for @Model.Name</h2>
+
+<form method="post">
+
+    <input type="hidden" name="roleId" value="@Model.Id" />
+
+    @foreach (var perm in (List<buildwave.Entities.Permission>)ViewBag.Permissions)
+    {
+        var checkedAttr = Model.RolePermissions.Any(rp => rp.PermissionId == perm.Id) ? "checked" : "";
+
+        <div>
+            <input type="checkbox" name="permissionIds" value="@perm.Id" @checkedAttr />
+            @perm.Name (@perm.Key)
+        </div>
+    }
+
+    <button type="submit">Save</button>
+
+</form>
