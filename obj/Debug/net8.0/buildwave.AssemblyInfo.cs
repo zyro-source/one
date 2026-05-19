@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("buildwave")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9813a9a59b0e08faaa209dd8625c63809edc36ab")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7efff36808e18a1bb3b363e2be471b1cb499ca0e")]
 [assembly: System.Reflection.AssemblyProductAttribute("buildwave")]
 [assembly: System.Reflection.AssemblyTitleAttribute("buildwave")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

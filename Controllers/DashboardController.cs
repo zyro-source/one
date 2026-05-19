@@ -1,13 +1,10 @@
-using buildwave.Security;
 using Microsoft.AspNetCore.Mvc;
+using buildwave.Security;
 
 namespace buildwave.Controllers;
 
 public class DashboardController : Controller
 {
-    // =========================
-    // DASHBOARD HOME
-    // =========================
     [RequirePermission("dashboard.view")]
     public IActionResult Index()
     {

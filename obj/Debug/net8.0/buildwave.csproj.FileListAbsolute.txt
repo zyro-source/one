@@ -99,6 +99,7 @@ D:\erp\buildwave\obj\Debug\net8.0\buildwave.csproj.CoreCompileInputs.cache
 D:\erp\buildwave\obj\Debug\net8.0\buildwave.MvcApplicationPartsAssemblyInfo.cache
 D:\erp\buildwave\obj\Debug\net8.0\buildwave.RazorAssemblyInfo.cache
 D:\erp\buildwave\obj\Debug\net8.0\buildwave.RazorAssemblyInfo.cs
+D:\erp\buildwave\obj\Debug\net8.0\buildwave.sourcelink.json
 D:\erp\buildwave\obj\Debug\net8.0\rjimswa.dswa.cache.json
 D:\erp\buildwave\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
 D:\erp\buildwave\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
@@ -115,4 +116,3 @@ D:\erp\buildwave\obj\Debug\net8.0\refint\buildwave.dll
 D:\erp\buildwave\obj\Debug\net8.0\buildwave.pdb
 D:\erp\buildwave\obj\Debug\net8.0\buildwave.genruntimeconfig.cache
 D:\erp\buildwave\obj\Debug\net8.0\ref\buildwave.dll
-D:\erp\buildwave\obj\Debug\net8.0\buildwave.sourcelink.json
